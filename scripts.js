@@ -13,6 +13,29 @@ let setup = new Settings(defaultSize, defaultColour);
 // Task 1: Draw Grid Programatically [Done]
 
 
+function resetGrid() {
+    const mainGrid = document.querySelector('.grid');
+    mainGrid.innerHTML = "";
+    
+    setup.size = getSize();
+    
+    // redo css config for grid
+    mainGrid.style.gridTemplateColumns = `repeat(${setup.size}, 1fr)`
+    mainGrid.style.gridTemplateRows = `repeat(${setup.size}, 1fr)`
+
+    drawGrid();
+}
+
+function getSize() {
+    let newSize = prompt("New grid size?: ");
+    if (newSize > 64 || newSize < 1) {
+        alert("Pls enter a number between 1-64");
+        getSize()
+    } else {
+        return newSize;
+    }
+}   
+
 function drawGrid() {
     const mainGrid = document.querySelector('.grid');
 
@@ -28,8 +51,6 @@ function drawGrid() {
 }
 
 function hover (e) {
-    console.log(e);
-    console.log(setup.colour);
     // currentColour : String
     e.srcElement.style['background-color'] = setup.colour;
 }     
