@@ -28,8 +28,8 @@ function resetGrid() {
 
 function getSize() {
     let newSize = prompt("New grid size?: ");
-    if (newSize > 64 || newSize < 1) {
-        alert("Pls enter a number between 1-64");
+    if (newSize > 100 || newSize < 1) {
+        alert("Pls enter a number between 1-100");
         getSize()
     } else {
         return newSize;
