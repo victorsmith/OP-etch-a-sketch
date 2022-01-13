@@ -1,9 +1,14 @@
 const defaultSize = 16;
-const defaultColour = '#ffffff';
+const defaultColour = '#000000';
 
+class Settings {
+    constructor(newSize, newColour) {
+        this.size = newSize;
+        this.colour = newColour;
+    }
+}
 
-let currentSize = defaultSize;
-let currentColour = defaultColour;
+let setup = new Settings(defaultSize, defaultColour);
 
 // Task 1: Draw Grid Programatically [Done]
 
@@ -11,7 +16,7 @@ let currentColour = defaultColour;
 function drawGrid() {
     const mainGrid = document.querySelector('.grid');
 
-    for  (x=0; x<(currentSize*currentSize); x++) {
+    for  (x=0; x<(setup.size**2); x++) {
         const newCell = document.createElement('div');
         
         newCell.addEventListener('mouseover', hover);
@@ -23,9 +28,10 @@ function drawGrid() {
 }
 
 function hover (e) {
-    // is e just an event
     console.log(e);
-    e.srcElement.classList.remove('fresh');
+    console.log(setup.colour);
+    // currentColour : String
+    e.srcElement.style['background-color'] = setup.colour;
 }     
 
 document.onload = drawGrid();
