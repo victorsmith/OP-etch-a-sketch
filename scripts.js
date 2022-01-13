@@ -1,24 +1,22 @@
+const defaultSize = 16;
+const defaultColour = '#ffffff';
 
-const mainGrid = document.querySelector('.grid');
 
-for (x=0; x<64; x++) {
-    const subDiv = document.createElement('div');
-    subDiv.classList.add('blue');
-    subDiv.textContent = x;
-    mainGrid.appendChild(subDiv);
+let currentSize = defaultSize;
+let currentColour = defaultColour;
+
+// Task 1: Draw Grid Programatically [Done]
+
+function drawGrid() {
+    const mainGrid = document.querySelector('.grid');
+    
+    for  (x=0; x<(currentSize*currentSize); x++) {
+        const newCell = document.createElement('div');
+        newCell.textContent = "p";
+        newCell.classList.add('fresh');
+        mainGrid.appendChild(newCell);
+        // console.log(x);
+    }
 }
 
-    
-
-const divs = document.querySelectorAll('div.blue');
-// we use the .forEach method to iterate through each button
-divs.forEach((subDiv) => {
-    // and for each one we add a 'click' listener
-    subDiv.addEventListener('mouseenter', () => {
-        // console.log(subDiv.textContent)
-        subDiv.classList.remove('blue');
-        subDiv.classList.add('red');
-    });
-});
-
-
+document.onload = drawGrid();
